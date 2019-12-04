@@ -5,6 +5,8 @@ import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
@@ -49,6 +51,12 @@ public class Main extends Application {
 	
 	//Text Area
 	TextArea showStationArea;
+	
+	//Slider
+	Slider slider;
+	
+	//Drop down
+	ComboBox dropDown;
 
 	public void start(Stage primaryStage) {
 		try {
@@ -131,11 +139,20 @@ public class Main extends Application {
 			showStationArea = new TextArea();
 			showStationArea.setPrefColumnCount(2);
 			
-		
-			grid.add(answerD4,0,0);
-			grid.add(userStation,1,0);
-			grid.add(showStationArea,0,1,2,1);
 			
+			//initialize slider
+			slider = new Slider(0,4,1);
+			slider.setShowTickMarks(true);
+			slider.setShowTickLabels(true);
+			slider.setMajorTickUnit(1);
+			slider.setMinorTickCount(0);
+			slider.setSnapToTicks(true);
+			
+			
+			//initialize comboBox
+			dropDown = new ComboBox();
+			grid.add(dropDown,0,0);
+		
 			
 			Scene scene = new Scene(grid,600,800);
 			primaryStage.setScene(scene);
