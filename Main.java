@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
@@ -85,39 +84,60 @@ public class Main extends Application {
 			BackgroundFill fill = new BackgroundFill(Color.TRANSPARENT,CornerRadii.EMPTY, Insets.EMPTY);
 			Background bg = new Background(fill);
 			
-			BorderStroke borderStroke = new BorderStroke
-					(Color.BLUE, BorderStrokeStyle.SOLID,CornerRadii.EMPTY, new BorderWidths(1));
+			//blue border
+			BorderStroke borderStroke = new BorderStroke(Color.BLUE, 
+					BorderStrokeStyle.SOLID,CornerRadii.EMPTY, new BorderWidths(1));
 			Border border = new Border(borderStroke);
 			
 			
 			//initialize TextFields
 			userHam = new TextField();
 			userHam.setEditable(false);
+			userHam.setBackground(bg);
+			userHam.setBorder(border);
+			
 			answerD0 = new TextField();
 			answerD0.setEditable(false);
+			answerD0.setBackground(bg);
+			answerD0.setBorder(border);
+			
 			answerD1 = new TextField();
 			answerD1.setEditable(false);
+			answerD1.setBackground(bg);
+			answerD1.setBorder(border);
+			
 			answerD2 = new TextField();
 			answerD2.setEditable(false);
+			answerD2.setBackground(bg);
+			answerD2.setBorder(border);
+			
 			answerD3 = new TextField();
 			answerD3.setEditable(false);
+			answerD3.setBackground(bg);
+			answerD3.setBorder(border);
+			
 			answerD4 = new TextField("This is The Text");
 			answerD4.setEditable(false);
-			
-			
 			answerD4.setBackground(bg);
 			answerD4.setBorder(border);
 			
-			grid.add(answerD4,0,0);
-			
 			userStation = new TextField();
 			userStation.setEditable(true);
+			userStation.setBackground(bg);
+			userStation.setBorder(border);
 			
 			
+			//initialize Text area
+			showStationArea = new TextArea();
+			showStationArea.setPrefColumnCount(2);
+			
+		
+			grid.add(answerD4,0,0);
+			grid.add(userStation,1,0);
+			grid.add(showStationArea,0,1,2,1);
 			
 			
-			
-			Scene scene = new Scene(grid,400,800);
+			Scene scene = new Scene(grid,600,800);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
