@@ -2,6 +2,8 @@ package application;
 	
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
@@ -21,7 +23,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
 
 public class Main extends Application {
@@ -194,10 +195,42 @@ public class Main extends Application {
 			primaryStage.show();
 			
 			
+			//button action events
+			showStation.setOnAction(new EventHandler<ActionEvent>() {
+			    @Override public void handle(ActionEvent e) {
+			       showStationsPress();
+			    }
+			});
+			calcHD.setOnAction(new EventHandler<ActionEvent>() {
+			    @Override public void handle(ActionEvent e) {
+			       calcHDPress();
+			    }
+			});
+			addStation.setOnAction(new EventHandler<ActionEvent>() {
+			    @Override public void handle(ActionEvent e) {
+			       addStationPress();
+			    }
+			});
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	
+	//Updates text area
+	public void showStationsPress(){
+		showStationArea.setText("The Button works Hooray");
+	}
+	
+	//calculates hamming distances
+	public void calcHDPress(){
+		answerD0.setText("works");
+	}
+	
+	public void addStationPress(){
+		userStation.setText("works");
 	}
 	
 	public static void main(String[] args) {
