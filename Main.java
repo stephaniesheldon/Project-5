@@ -7,8 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 
@@ -73,6 +81,15 @@ public class Main extends Application {
 			d4 = new Text("Distance 4");
 			
 			
+			//transparent background
+			BackgroundFill fill = new BackgroundFill(Color.TRANSPARENT,CornerRadii.EMPTY, Insets.EMPTY);
+			Background bg = new Background(fill);
+			
+			BorderStroke borderStroke = new BorderStroke
+					(Color.BLUE, BorderStrokeStyle.SOLID,CornerRadii.EMPTY, new BorderWidths(1));
+			Border border = new Border(borderStroke);
+			
+			
 			//initialize TextFields
 			userHam = new TextField();
 			userHam.setEditable(false);
@@ -84,10 +101,19 @@ public class Main extends Application {
 			answerD2.setEditable(false);
 			answerD3 = new TextField();
 			answerD3.setEditable(false);
-			answerD4 = new TextField();
+			answerD4 = new TextField("This is The Text");
 			answerD4.setEditable(false);
 			
-			grid.add(userHam,2,5);
+			
+			answerD4.setBackground(bg);
+			answerD4.setBorder(border);
+			
+			grid.add(answerD4,0,0);
+			
+			userStation = new TextField();
+			userStation.setEditable(true);
+			
+			
 			
 			
 			
