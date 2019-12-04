@@ -1,6 +1,7 @@
 package application;
 	
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -239,7 +240,17 @@ public class Main extends Application {
 	
 	//calculates hamming distances
 	public void calcHDPress(){
-		answerD0.setText("works");
+		Object chosenStation = dropDown.getValue();
+		String chosenStationString = chosenStation.toString();
+		
+		HashMap<Integer,Integer> answers = 
+				stations.checkNumberDistances(chosenStationString);
+		
+		answerD0.setText(Integer.toString(answers.get(0)));
+		answerD1.setText(Integer.toString(answers.get(1)));
+		answerD2.setText(Integer.toString(answers.get(2)));
+		answerD3.setText(Integer.toString(answers.get(3)));
+		answerD4.setText(Integer.toString(answers.get(4)));
 	}
 	
 	public void addStationPress(){
