@@ -28,7 +28,19 @@ public class Main extends Application {
 	Text d3;
 	Text d4;
 	
+	//Text Fields
+	//not editable
+	TextField userHam;
+	TextField answerD0;
+	TextField answerD1;
+	TextField answerD2;
+	TextField answerD3;
+	TextField answerD4;
+	//editable
+	TextField userStation;
 	
+	
+	//Text Area
 	TextArea showStationArea;
 
 	public void start(Stage primaryStage) {
@@ -60,6 +72,22 @@ public class Main extends Application {
 			d3 = new Text("Distance 3");
 			d4 = new Text("Distance 4");
 			
+			
+			//initialize TextFields
+			userHam = new TextField();
+			userHam.setEditable(false);
+			answerD0 = new TextField();
+			answerD0.setEditable(false);
+			answerD1 = new TextField();
+			answerD1.setEditable(false);
+			answerD2 = new TextField();
+			answerD2.setEditable(false);
+			answerD3 = new TextField();
+			answerD3.setEditable(false);
+			answerD4 = new TextField();
+			answerD4.setEditable(false);
+			
+			grid.add(userHam,2,5);
 			
 			
 			
