@@ -1,5 +1,7 @@
 package application;
 	
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -154,7 +156,7 @@ public class Main extends Application {
 			
 			
 			//initialize slider
-			slider = new Slider(0,4,1);
+			slider = new Slider(1,4,1);
 			slider.setShowTickMarks(true);
 			slider.setShowTickLabels(true);
 			slider.setMajorTickUnit(1);
@@ -165,6 +167,7 @@ public class Main extends Application {
 			//initialize comboBox
 			dropDown = new ComboBox(FXCollections 
                     .observableArrayList(stations.getSetToList()).sorted());
+			dropDown.getSelectionModel().select(0);
 			
 			
 			//place in grid
@@ -213,6 +216,8 @@ public class Main extends Application {
 			});
 			
 			
+			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -221,7 +226,15 @@ public class Main extends Application {
 	
 	//Updates text area
 	public void showStationsPress(){
-		showStationArea.setText("The Button works Hooray");
+		int sliderVal = (int) slider.getValue();
+		Object chosenStation = dropDown.getValue();
+		String chosenStationString = chosenStation.toString();
+		ArrayList<String> stationsSame = stations.HDStationList(sliderVal,chosenStationString);
+		String stationListString = "";
+		for(String s: stationsSame){
+			stationListString += s + "\n";
+		}
+		showStationArea.setText(stationListString);
 	}
 	
 	//calculates hamming distances

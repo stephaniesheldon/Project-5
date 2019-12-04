@@ -24,5 +24,30 @@ public class StationListTest {
 		Boolean exptd = true;
 		assertEquals(actual,expected);
 	}
+	
+	@Test
+	public void sameHDTest(){
+		StationList sl = new StationList();
+		int hd = 2;
+		String station1 = "HAWK";
+		String station2 = "HEWT";
+		
+		Boolean expected = true;
+		Boolean actual = sl.sameHD(hd,station1,station2);
+		
+		assertEquals(expected,actual);
+	}
+	
+	@Test
+	public void HDStationListTest(){
+		// TALA TALI
+		StationList sl = new StationList();
+		ArrayList<String> expected = new ArrayList<>();
+		expected.add("TALI");
+		ArrayList<String> actual;
+		actual = sl.HDStationList(1,"TALA");
+		
+		assertEquals(expected,actual);
+	}
 
 }
