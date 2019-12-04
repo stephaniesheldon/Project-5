@@ -5,8 +5,11 @@ import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 
 public class Main extends Application {
@@ -15,10 +18,23 @@ public class Main extends Application {
 	Button showStation;
 	Button calcHD;
 	Button addStation;
+	
+	//Prompt Text fields
+	Text enterHamDist;
+	TextField compareW;
+	TextField d0;
+	TextField d1;
+	TextField d2;
+	TextField d3;
+	TextField d4;
+	
+	
+	TextArea showStationArea;
 
 	public void start(Stage primaryStage) {
 		try {
 			primaryStage.setTitle("Hamming Distance");
+			
 			
 			
 			//create grid pane
@@ -28,25 +44,26 @@ public class Main extends Application {
 			grid.setPadding(new Insets(0,10,0,10));
 			
 			
+			
 			//initialize buttons
 			showStation = new Button("Show Station");
 			calcHD = new Button("Calculate HD");
 			addStation = new Button("Add Station");
 			
+
+			//initialize prompt textFields
+			enterHamDist = new Text("Enter Hamming Distance");
 			
-			grid.add(calcHD,0,0);
-			grid.add(addStation,1,1,2,2);
+			grid.add(enterHamDist,0,0);
+			
+			
 			
 			Scene scene = new Scene(grid,400,800);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
 			
-			/*
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			*/
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
