@@ -1,6 +1,8 @@
 package application;
 	
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -19,9 +21,12 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 
 public class Main extends Application {
+	//Stations
+	StationList stations;
 	
 	//Buttons
 	Button showStation;
@@ -59,6 +64,7 @@ public class Main extends Application {
 	ComboBox dropDown;
 
 	public void start(Stage primaryStage) {
+		stations = new StationList();
 		try {
 			primaryStage.setTitle("Hamming Distance");
 			
@@ -75,17 +81,24 @@ public class Main extends Application {
 			//initialize buttons
 			showStation = new Button("Show Station");
 			calcHD = new Button("Calculate HD");
+			grid.setHalignment(calcHD,HPos.CENTER);
 			addStation = new Button("Add Station");
+			grid.setHalignment(addStation,HPos.CENTER);
 			
 
 			//initialize prompt texts
 			enterHamDist = new Text("Enter Hamming Distance");
 			compareW = new Text("Compare with:    ");
 			d0 = new Text("Distance 0");
+			grid.setHalignment(d0,HPos.CENTER);
 			d1 = new Text("Distance 1");
+			grid.setHalignment(d1,HPos.CENTER);
 			d2 = new Text("Distance 2");
+			grid.setHalignment(d2,HPos.CENTER);
 			d3 = new Text("Distance 3");
+			grid.setHalignment(d3,HPos.CENTER);
 			d4 = new Text("Distance 4");
+			grid.setHalignment(d4,HPos.CENTER);
 			
 			
 			//transparent background
@@ -124,15 +137,14 @@ public class Main extends Application {
 			answerD3.setBackground(bg);
 			answerD3.setBorder(border);
 			
-			answerD4 = new TextField("This is The Text");
+			answerD4 = new TextField();
 			answerD4.setEditable(false);
 			answerD4.setBackground(bg);
 			answerD4.setBorder(border);
 			
 			userStation = new TextField();
 			userStation.setEditable(true);
-			userStation.setBackground(bg);
-			userStation.setBorder(border);
+			
 			
 			
 			//initialize Text area
@@ -150,11 +162,34 @@ public class Main extends Application {
 			
 			
 			//initialize comboBox
-			dropDown = new ComboBox();
-			grid.add(dropDown,0,0);
+			dropDown = new ComboBox(FXCollections 
+                    .observableArrayList(stations.getSetToList()).sorted());
+			
+			
+			//place in grid
+			grid.add(enterHamDist,0,1);
+			grid.add(userHam,1,1);
+			grid.add(slider,0,2,2,1);
+			grid.add(showStation,0,3);
+			grid.add(showStationArea,0,4,2,1);
+			grid.add(compareW,0,6);
+			grid.add(dropDown,1,6);
+			grid.add(calcHD,0,7);
+			grid.add(d0,0,8);
+			grid.add(answerD0,1,8);
+			grid.add(d1,0,9);
+			grid.add(answerD1,1,9);
+			grid.add(d2,0,10);
+			grid.add(answerD2,1,10);
+			grid.add(d3,0,11);
+			grid.add(answerD3,1,11);
+			grid.add(d4,0,12);
+			grid.add(answerD4,1,12);
+			grid.add(addStation,0,13);
+			grid.add(userStation,1,13);
 		
 			
-			Scene scene = new Scene(grid,600,800);
+			Scene scene = new Scene(grid,600,650);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
