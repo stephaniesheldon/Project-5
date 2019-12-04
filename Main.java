@@ -19,14 +19,14 @@ public class Main extends Application {
 	Button calcHD;
 	Button addStation;
 	
-	//Prompt Text fields
+	//Prompt Texts
 	Text enterHamDist;
-	TextField compareW;
-	TextField d0;
-	TextField d1;
-	TextField d2;
-	TextField d3;
-	TextField d4;
+	Text compareW;
+	Text d0;
+	Text d1;
+	Text d2;
+	Text d3;
+	Text d4;
 	
 	
 	TextArea showStationArea;
@@ -51,10 +51,15 @@ public class Main extends Application {
 			addStation = new Button("Add Station");
 			
 
-			//initialize prompt textFields
+			//initialize prompt texts
 			enterHamDist = new Text("Enter Hamming Distance");
+			compareW = new Text("Compare with:    ");
+			d0 = new Text("Distance 0");
+			d1 = new Text("Distance 1");
+			d2 = new Text("Distance 2");
+			d3 = new Text("Distance 3");
+			d4 = new Text("Distance 4");
 			
-			grid.add(enterHamDist,0,0);
 			
 			
 			
