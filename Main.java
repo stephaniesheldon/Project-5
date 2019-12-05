@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -167,7 +171,7 @@ public class Main extends Application {
 			
 			//initialize comboBox
 			dropDown = new ComboBox(FXCollections 
-                    .observableArrayList(stations.getSetToList()).sorted());
+                    .observableArrayList(stations.getStationList()).sorted());
 			dropDown.getSelectionModel().select(0);
 			
 			
@@ -197,6 +201,16 @@ public class Main extends Application {
 			Scene scene = new Scene(grid,600,650);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			//action event slider
+			slider.valueProperty().addListener(new ChangeListener<Number>() {
+	            public void changed(ObservableValue<? extends Number> ov,
+	                Number old_val, Number new_val) {
+	            	int hamVal = new_val.intValue();
+	                    
+	                    userHam.setText(Integer.toString(hamVal));
+	            }
+	        });
 			
 			
 			//button action events
