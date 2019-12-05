@@ -233,6 +233,7 @@ public class Main extends Application {
 			
 			
 			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -267,8 +268,23 @@ public class Main extends Application {
 		answerD4.setText(Integer.toString(answers.get(4)));
 	}
 	
+	
+	//adds the station to the combobox
 	public void addStationPress(){
-		userStation.setText("works");
+		String newStation = userStation.getText();
+		if(newStation.length() != 4){
+			userStation.setText("Enter Four Characters");	
+		}
+		else{
+			stations.addStation(newStation.toUpperCase());
+			dropDown.setItems(FXCollections 
+					.observableArrayList(stations.getSetToList()).sorted());
+		
+			userStation.setText("");
+		}
+			
+		
+		
 	}
 	
 	public static void main(String[] args) {
