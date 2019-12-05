@@ -70,6 +70,11 @@ public class Main extends Application {
 	
 	//Drop down
 	ComboBox dropDown;
+	
+	//Free Space
+	Button showCombinations;
+	TextArea combinationsSpace;
+	
 
 	public void start(Stage primaryStage) {
 		stations = new StationList();
@@ -120,7 +125,7 @@ public class Main extends Application {
 			
 			
 			//initialize TextFields
-			userHam = new TextField();
+			userHam = new TextField("1");
 			userHam.setEditable(false);
 			userHam.setBackground(bg);
 			userHam.setBorder(border);
@@ -158,6 +163,7 @@ public class Main extends Application {
 			//initialize Text area
 			showStationArea = new TextArea();
 			showStationArea.setPrefColumnCount(2);
+			showStationArea.setEditable(false);
 			
 			
 			//initialize slider
@@ -198,7 +204,7 @@ public class Main extends Application {
 			grid.add(userStation,1,13);
 		
 			
-			Scene scene = new Scene(grid,600,650);
+			Scene scene = new Scene(grid,550,650);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
@@ -230,8 +236,25 @@ public class Main extends Application {
 			    }
 			});
 			
+			//intialize free space button and place button
+			showCombinations = new Button("Show Possible Combinations");
+			grid.setFillWidth(showCombinations, true);
+			grid.setHalignment(showCombinations,HPos.CENTER);
+			grid.add(showCombinations,2,1);
 			
+			//initialize free space text area
+			combinationsSpace = new TextArea();
+			combinationsSpace.setEditable(false);
+			combinationsSpace.setPrefRowCount(12);
+			combinationsSpace.setPrefWidth(200);
+			grid.add(combinationsSpace,2,2,1,12);
 			
+			//combinationButtonPressed
+			showCombinations.setOnAction(new EventHandler<ActionEvent>() {
+			    @Override public void handle(ActionEvent e) {
+			       showCombinations();
+			    }
+			});
 			
 			
 		} catch(Exception e) {
@@ -240,7 +263,7 @@ public class Main extends Application {
 	}
 	
 	
-	//Updates text area
+	//Updates text area that shows stations
 	public void showStationsPress(){
 		int sliderVal = (int) slider.getValue();
 		Object chosenStation = dropDown.getValue();
@@ -282,8 +305,19 @@ public class Main extends Application {
 		
 			userStation.setText("");
 		}
-			
-		
+	}
+	
+	//shows combinations in text area when combination button is pressed
+	public void showCombinations(){
+
+		Object chosenStation = dropDown.getValue();
+		String chosenStationString = chosenStation.toString();
+		ArrayList<String> stationCombos = Combinations.findCombinations(chosenStationString);
+		String stationListString = "";
+		for(String s: stationCombos){
+			stationListString += s + "\n";
+		}
+		combinationsSpace.setText(stationListString);
 		
 	}
 	
